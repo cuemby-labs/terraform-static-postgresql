@@ -1,0 +1,69 @@
+openapi: 3.0.3
+info:
+  title: OpenAPI schema for template terraform-static-postgresql
+components:
+  schemas:
+    variables:
+      type: object
+      required:
+      - hosts
+      - password
+      - username
+      properties:
+        hosts:
+          title: Hosts
+          type: array
+          description: The host list of the PostgreSQL service.
+          items:
+            type: string
+          x-walrus-ui:
+            colSpan: 12
+            group: Basic
+            order: 2
+        hosts_readonly:
+          title: Hosts Readonly
+          type: array
+          description: The readonly host list of the PostgreSQL service.
+          default: []
+          items:
+            type: string
+          x-walrus-ui:
+            colSpan: 12
+            group: Basic
+            order: 3
+        port:
+          title: Port
+          type: number
+          description: The port of the PostgreSQL service.
+          default: 5432
+          x-walrus-ui:
+            group: Basic
+            order: 7
+        database:
+          title: Database
+          type: string
+          description: The name of the PostgreSQL database to access.
+          default: ""
+          x-walrus-ui:
+            group: Basic
+            order: 6
+        username:
+          title: Username
+          type: string
+          description: The username of the account to access the database.
+          x-walrus-ui:
+            group: Basic
+            order: 4
+        password:
+          title: Password
+          type: string
+          description: The password of the account to access the database.
+          format: password
+          writeOnly: true
+          x-walrus-ui:
+            group: Basic
+            order: 5
+      x-walrus-ui:
+        groupOrder:
+        - Basic
+        - Advanced
